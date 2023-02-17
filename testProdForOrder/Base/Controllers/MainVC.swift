@@ -33,6 +33,7 @@ class MainVC: UIViewController {
         setupViews()
         configureAppearance()
         createTableView()
+        navigationController?.navigationBar.isHidden = true
     }
     
     //MARK: - Private func
