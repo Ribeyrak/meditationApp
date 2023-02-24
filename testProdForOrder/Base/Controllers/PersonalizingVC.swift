@@ -9,7 +9,7 @@ import UIKit
 
 class PersonalizingVC: UIViewController {
 
-    // MARK: - UI
+    //MARK: - UI
     private let backgroundImage = UIImageView()
     private let image = Resouces.Backgrounds.thirdBack
     private let firstLabel = UILabel()
@@ -17,7 +17,7 @@ class PersonalizingVC: UIViewController {
     private var timer = Timer()
     private let screenDescrip = UILabel()
     
-    // MARK: - Lifececycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +26,7 @@ class PersonalizingVC: UIViewController {
         createdTimer()
     }
     
-    // MARK: - Private functions
+    //MARK: - Private functions
     private func setupViews() {
         view.addSubview(backgroundImage)
         backgroundImage.snp.makeConstraints {
@@ -81,6 +81,7 @@ class PersonalizingVC: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateProgressView), userInfo: nil, repeats: true)
     }
     
+    //MARK: - Actions
     @objc func updateProgressView() {
         if progressView.progress != 1.0 {
             progressView.progress += 0.5 / 1

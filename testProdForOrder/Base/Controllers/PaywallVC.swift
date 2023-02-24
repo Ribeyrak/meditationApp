@@ -13,7 +13,6 @@ class PaywallVC: UIViewController {
     
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.secondBack
     private let firstLabel = UILabel()
     private let oneDiscipLabel = UILabel()
     private let twoDiscipLabel = UILabel()
@@ -33,7 +32,7 @@ class PaywallVC: UIViewController {
     
     private let nextScreenButton = NextScreenButton()
     
-    //MARK: - Lifececycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,53 +40,17 @@ class PaywallVC: UIViewController {
         configureAppearance()
         availableSubscriptions()
         collectionView.reloadData()
+        
+        
     }
     
-    // MARK: - Private functions
+    //MARK: - Private functions
     private func setupViews() {
         
         view.addSubview(backgroundImage)
         backgroundImage.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.right.left.equalToSuperview()
-        }
-        view.addSubview(firstLabel)
-        firstLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.left.right.equalToSuperview().inset(23)
-            $0.top.equalToSuperview().offset(240)
-        }
-        view.addSubview(oneDiscipLabel)
-        oneDiscipLabel.snp.makeConstraints {
-            $0.left.right.equalToSuperview().inset(23)
-            $0.top.equalTo(firstLabel.snp.bottom).offset(12)
-        }
-        view.addSubview(twoDiscipLabel)
-        twoDiscipLabel.snp.makeConstraints {
-            $0.left.right.equalToSuperview().inset(23)
-            $0.top.equalTo(oneDiscipLabel.snp.bottom).offset(10)
-        }
-        view.addSubview(threeDiscipLabel)
-        threeDiscipLabel.snp.makeConstraints {
-            $0.left.right.equalToSuperview().inset(23)
-            $0.top.equalTo(twoDiscipLabel.snp.bottom).offset(10)
-        }
-        view.addSubview(fourDiscipLabel)
-        fourDiscipLabel.snp.makeConstraints {
-            $0.left.right.equalToSuperview().inset(23)
-            $0.top.equalTo(threeDiscipLabel.snp.bottom).offset(10)
-        }
-        view.addSubview(trialLabel)
-        trialLabel.snp.makeConstraints {
-            $0.left.right.equalToSuperview().inset(23)
-            $0.top.equalTo(fourDiscipLabel.snp.bottom).offset(12)
-        }
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints {
-            $0.left.right.equalToSuperview()
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(trialLabel.snp.bottom).offset(11)
-            $0.height.equalTo(200)
         }
         view.addSubview(nextScreenButton)
         nextScreenButton.snp.makeConstraints {
@@ -96,11 +59,50 @@ class PaywallVC: UIViewController {
             $0.left.right.equalToSuperview().inset(34)
             $0.height.equalTo(75)
         }
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(nextScreenButton.snp.top).inset(11)
+            $0.height.equalTo(200)
+        }
+        view.addSubview(trialLabel)
+        trialLabel.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(23)
+            $0.bottom.equalTo(collectionView.snp.top).inset(12)
+        }
+        view.addSubview(fourDiscipLabel)
+        fourDiscipLabel.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(23)
+            $0.bottom.equalTo(trialLabel.snp.top).inset(-12)
+        }
+        view.addSubview(threeDiscipLabel)
+        threeDiscipLabel.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(23)
+            $0.bottom.equalTo(fourDiscipLabel.snp.top).inset(-12)
+        }
+        view.addSubview(twoDiscipLabel)
+        twoDiscipLabel.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(23)
+            $0.bottom.equalTo(threeDiscipLabel.snp.top).inset(-12)
+        }
+        view.addSubview(oneDiscipLabel)
+        oneDiscipLabel.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(23)
+            $0.bottom.equalTo(twoDiscipLabel.snp.top).inset(-12)
+        }
+        view.addSubview(firstLabel)
+        firstLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(23)
+            //$0.top.equalToSuperview().offset(240)
+            $0.bottom.equalTo(oneDiscipLabel.snp.top).inset(-25)
+        }
     }
     
     private func configureAppearance() {
         
-        backgroundImage.image = image
+        backgroundImage.image = Resouces.Backgrounds.secondBack
         
         firstLabel.text = "Try Investee Premium for Free"
         firstLabel.textColor = .white
@@ -147,6 +149,7 @@ class PaywallVC: UIViewController {
         ]
     }
     
+    //MARK: - Actions
     @objc func nextVC() {
         let nextVC = MainVC()
         navigationController?.pushViewController(nextVC, animated: true)
@@ -154,7 +157,7 @@ class PaywallVC: UIViewController {
     
 }
 
-// MARK: - CollectionView DataSource
+//MARK: - CollectionView DataSource
 extension PaywallVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return subscriptions.count
@@ -171,7 +174,6 @@ extension PaywallVC: UICollectionViewDataSource {
         let subscription = subscriptions[indexPath.row]
         cell.setup(with: subscription)
         
-        
         return cell
     }
     
@@ -186,22 +188,21 @@ extension PaywallVC: UICollectionViewDataSource {
         cell.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         collectionView.deselectItem(at: indexPath, animated: true)
     }
-    
-    
 }
 
-// MARK: - CollectionView Delegate
-extension PaywallVC: UICollectionViewDelegate {
+//MARK: - CollectionView Delegate
+extension PaywallVC: UICollectionViewDelegate {}
 
-}
-
-// MARK: - CollectionViewDelegateFlowLayout Delegate
+//MARK: - CollectionViewDelegateFlowLayout Delegate
 extension PaywallVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 170, height: 150)
+        let screenWidth = UIScreen.main.bounds.width
+        let cellWidth = (screenWidth / 2) * 0.85 // 2 ячейки в строке, 0.85 - отступы
+        let cellHeight: CGFloat = 150
+        return CGSize(width: cellWidth, height: cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 10, left: 34, bottom: 10, right: 34)
+        UIEdgeInsets(top: 10, left: 24, bottom: 10, right: 24)
     }
 }

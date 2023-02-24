@@ -10,7 +10,7 @@ import AVKit
 
 final class PlayerVC: UIViewController {
 
-    // MARK: - Properties
+    //MARK: - Properties
     var album: Album
     
     private lazy var mediaPlayer: MediaPlayer = {
@@ -20,9 +20,8 @@ final class PlayerVC: UIViewController {
     }()
     
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.firstBack
     
-    // MARK: - Initialization
+    //MARK: - Initialization
     init(album: Album) {
         self.album = album
         super.init(nibName: nil, bundle: nil)
@@ -37,14 +36,26 @@ final class PlayerVC: UIViewController {
         super.viewDidLoad()
 
         navigationController?.navigationBar.isHidden = false
-
         setupViews()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        mediaPlayer.play()
+        UIApplication.shared.isIdleTimerDisabled = true
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        mediaPlayer.stop()
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
 
-    //MARK: - Private func
+    //MARK: - Private functions
     private func setupViews() {
         
-        backgroundImage.image = image
+        backgroundImage.image = Resouces.Backgrounds.firstBack
         
         view.addSubview(backgroundImage)
         backgroundImage.snp.makeConstraints {
@@ -53,20 +64,8 @@ final class PlayerVC: UIViewController {
         
         view.addSubview(mediaPlayer)
         mediaPlayer.snp.makeConstraints {
-            $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.top.bottom.equalTo(view.safeAreaLayoutGuide).inset(-20)
             $0.left.right.equalToSuperview()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        mediaPlayer.play()
-        UIApplication.shared.isIdleTimerDisabled = true
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        mediaPlayer.stop()
-        UIApplication.shared.isIdleTimerDisabled = false
     }
 }

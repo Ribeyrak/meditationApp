@@ -12,24 +12,24 @@ class ProductsVC: UIViewController {
     let identifier = "MyCell"
     var arrayCells = ["🙏 Learn self-care", "🧘 Start meditation", "😴 Sleep better and faster", "😶 Control emotions", "📝 Track your mood", "🎞 Watch self-care videos"]
     
-    // MARK: - UI
+    //MARK: - UI
     private let backgroundImage = UIImageView()
     private let image = Resouces.Backgrounds.secondBack
     private let screenDescrip = UILabel()
     private let productTableView = UITableView(frame: .zero, style: .grouped)
     private let nextScreenButton = NextScreenButton()
     
-    // MARK: - Lifececycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         configureAppearance()
         createTableView()
-        //productTableView.sectionHeaderHeight = UITableView.automaticDimension
+        navigationController?.navigationBar.isHidden = true
     }
     
-    // MARK: - Private functions
+    //MARK: - Private functions
     private func setupViews() {
         
         view.addSubview(backgroundImage)
@@ -57,7 +57,7 @@ class ProductsVC: UIViewController {
         view.addSubview(productTableView)
         productTableView.snp.makeConstraints {
             $0.top.equalTo(screenDescrip.snp.bottom).offset(15)
-            $0.bottom.equalTo(nextScreenButton.snp.top).inset(-44)
+            $0.bottom.equalTo(nextScreenButton.snp.top).offset(-15)
             $0.left.right.equalToSuperview().inset(34)
         }
     }
@@ -82,11 +82,13 @@ class ProductsVC: UIViewController {
         productTableView.dataSource = self
         productTableView.sectionHeaderHeight = 0
         productTableView.allowsMultipleSelection = true
-        //productTableView.rowHeight = 60//UITableView.automaticDimension
+//        productTableView.rowHeight = UITableView.automaticDimension
+//        productTableView.estimatedRowHeight = 60
         productTableView.backgroundColor = .clear
         productTableView.isScrollEnabled = false
     }
     
+    //MARK: - Actions
     @objc func nextVC() {
         let nextVC = PersonalizingVC()
         navigationController?.pushViewController(nextVC, animated: true)
@@ -100,15 +102,11 @@ extension ProductsVC: UITableViewDataSource {
         return arrayCells.count
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         cell.textLabel?.text = arrayCells[indexPath.section]
@@ -135,6 +133,11 @@ extension ProductsVC: UITableViewDataSource {
  //MARK: - TableView Delegate
 extension ProductsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        let rowHeight = (tableView.frame.height / CGFloat(arrayCells.count))*0.75
+        return rowHeight
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
     }
 }

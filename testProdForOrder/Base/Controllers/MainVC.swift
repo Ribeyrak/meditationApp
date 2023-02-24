@@ -33,10 +33,15 @@ class MainVC: UIViewController {
         setupViews()
         configureAppearance()
         createTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         navigationController?.navigationBar.isHidden = true
     }
     
-    //MARK: - Private func
+    //MARK: - Private functions
     private func setupViews() {
         view.addView(backgroundImage)
         backgroundImage.snp.makeConstraints {
@@ -94,6 +99,7 @@ class MainVC: UIViewController {
     }
 }
 
+//MARK: - TableView Delegate & DataSource
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

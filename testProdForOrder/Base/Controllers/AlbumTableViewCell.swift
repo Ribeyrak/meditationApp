@@ -9,6 +9,7 @@ import UIKit
 
 class AlbumTableViewCell: UITableViewCell {
 
+    //MARK: - Properties
     var cellsTitle = ["Meditate", "Sleep scape", "Feel calm"]
     var cellsImage = ["mind", "sleep", "leaf"]
     
@@ -28,6 +29,7 @@ class AlbumTableViewCell: UITableViewCell {
         return v
     }()
     
+    //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
@@ -38,11 +40,13 @@ class AlbumTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Private functions
     private func setupConstraints() {
         addSubview(iconView)
         iconView.snp.makeConstraints {
             $0.left.equalToSuperview().inset(34)
             $0.top.bottom.equalToSuperview().inset(20)
+            $0.width.equalTo(30)
         }
         
         addSubview(devider)

@@ -10,7 +10,7 @@ import SnapKit
 
 class SecondVC: UIViewController {
     
-    // MARK: - UI
+    //MARK: - UI
     private let backgroundImage = UIImageView()
     private let image = Resouces.Backgrounds.secondBack
     private let firstLabel = UILabel()
@@ -18,14 +18,14 @@ class SecondVC: UIViewController {
     private let screenDescrip = UILabel()
     private let nextScreenButton = NextScreenButton()
     
-    // MARK: - Lifececycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         
         setupViews()
         configureAppearance()
     }
     
-    // MARK: - Private functions
+    //MARK: - Private functions
     private func setupViews() {
         
         view.addSubview(backgroundImage)
@@ -85,6 +85,7 @@ class SecondVC: UIViewController {
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
     }
     
+    //MARK: - Actions
     @objc func nextVC() {
         let nextVC = ThirdVC()
         navigationController?.pushViewController(nextVC, animated: true)

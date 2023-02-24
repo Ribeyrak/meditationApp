@@ -9,7 +9,7 @@ import UIKit
 
 class RegisterVC: UIViewController {
 
-    // MARK: - UI
+    //MARK: - UI
     private let backgroundImage = UIImageView()
     private let image = Resouces.Backgrounds.firstBack
     private let firstLabel = UILabel()
@@ -20,7 +20,7 @@ class RegisterVC: UIViewController {
     private let phoneField = RegisterField()
     private let nextScreenButton = NextScreenButton()
     
-    // MARK: - Lifececycle
+    //MARK: - Lifececycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +34,7 @@ class RegisterVC: UIViewController {
 //        }
     }
     
-    // MARK: - Private functions
+    //MARK: - Private functions
     private func setupViews() {
         
         view.addSubview(backgroundImage)

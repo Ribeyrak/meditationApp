@@ -15,17 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        navigation = UINavigationController(rootViewController: FirstVC())
+        navigation = UINavigationController(rootViewController: PaywallVC())
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        if (UserDefaults.standard.string(forKey: "userEmail") != nil) {
-            window?.rootViewController = UINavigationController(rootViewController: MainVCCoordinator().start())
-        } else {
-            window?.rootViewController = navigation
-        }
-        //window?.rootViewController = navigation
+//        if (UserDefaults.standard.string(forKey: "userEmail") != nil) {
+//            window?.rootViewController = UINavigationController(rootViewController: MainVCCoordinator().start())
+//        } else {
+//            window?.rootViewController = navigation
+//        }
+        window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }
 

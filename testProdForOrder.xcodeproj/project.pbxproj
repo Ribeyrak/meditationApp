@@ -225,6 +225,7 @@
 		C88E9E162996A580008428A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C88E9E1D2996B2FE008428A6 /* MediaPlayer.swift */,
 				C88E9E142996A4D4008428A6 /* Song.swift */,
 				C88E9E172996A5A4008428A6 /* Album.swift */,
 			);
@@ -280,9 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				C8985597298AA792004A7B35 /* MainVC.swift */,
-				C8985599298AA7AE004A7B35 /* PlayerVC.swift */,
-				C88E9E1D2996B2FE008428A6 /* MediaPlayer.swift */,
 				C8AAD486299AB5ED0085F02A /* AlbumTableViewCell.swift */,
+				C8985599298AA7AE004A7B35 /* PlayerVC.swift */,
 				C88E9E162996A580008428A6 /* Model */,
 			);
 			name = Main;

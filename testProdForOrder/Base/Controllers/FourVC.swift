@@ -9,7 +9,7 @@ import UIKit
 
 class FourVC: UIViewController {
     
-    // MARK: - UI
+    //MARK: - UI
     private let backgroundImage = UIImageView()
     private let image = Resouces.Backgrounds.fourBack
     private let firstLabel = UILabel()
@@ -17,14 +17,14 @@ class FourVC: UIViewController {
     private let screenDescrip = UILabel()
     private let nextScreenButton = NextScreenButton()
     
-    // MARK: - Lifececycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         
         setupViews()
         configureAppearance()
     }
     
-    // MARK: - Private functions
+    //MARK: - Private functions
     private func setupViews() {
         
         view.addSubview(backgroundImage)
@@ -84,6 +84,7 @@ class FourVC: UIViewController {
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
     }
     
+    //MARK: - Actions
     @objc func nextVC() {
         let nextVC = FiveVC()
         navigationController?.pushViewController(nextVC, animated: true)

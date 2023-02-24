@@ -12,6 +12,7 @@ final class MediaPlayer: UIView {
     
     var album: Album
     
+    //MARK: - Properties
     private lazy var albumCover: UIImageView = {
         let v = UIImageView()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -112,6 +113,7 @@ final class MediaPlayer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Private func
     private func setupView() {
         albumCover.image = UIImage(named: album.image)
         setupPlayer(song: album.songs[playingIndex])
@@ -153,7 +155,8 @@ final class MediaPlayer: UIView {
         addSubview(controlStack)
         controlStack.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(32)
-            $0.top.equalTo(remainingTimeLabel.snp.bottom).offset(8)
+            //$0.top.equalTo(remainingTimeLabel.snp.bottom).offset(8)
+            $0.bottom.equalToSuperview().inset(40)
         }
     }
     
@@ -188,7 +191,7 @@ final class MediaPlayer: UIView {
     }
     
     private func setPlayPauseIcon(isPlaying: Bool) {
-        let config = UIImage.SymbolConfiguration(pointSize: 100)
+        let config = UIImage.SymbolConfiguration(pointSize: 80)
         playPauseButton.setImage(UIImage(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill", withConfiguration: config), for: .normal)
     }
     
@@ -198,6 +201,21 @@ final class MediaPlayer: UIView {
         timer = nil
     }
     
+    private func getFormattedTime(timeInterval: TimeInterval) -> String {
+        let mins = timeInterval / 60
+        let secs = timeInterval.truncatingRemainder(dividingBy: 60)
+        let timeFormater = NumberFormatter()
+        timeFormater.minimumIntegerDigits = 2
+        timeFormater.minimumFractionDigits = 0
+        timeFormater.roundingMode = .down
+        
+        guard let minsString = timeFormater.string(from: NSNumber(value: mins)) , let secStr = timeFormater.string(from: NSNumber(value: secs)) else {
+            return "00:00"
+        }
+        return "\(minsString):\(secStr)"
+    }
+    
+    //MARK: - Actions
     @objc private func updateProgress() {
         progressBar.value = Float(player.currentTime)
         
@@ -240,19 +258,6 @@ final class MediaPlayer: UIView {
         setPlayPauseIcon(isPlaying: player.isPlaying)
     }
     
-    private func getFormattedTime(timeInterval: TimeInterval) -> String {
-        let mins = timeInterval / 60
-        let secs = timeInterval.truncatingRemainder(dividingBy: 60)
-        let timeFormater = NumberFormatter()
-        timeFormater.minimumIntegerDigits = 2
-        timeFormater.minimumFractionDigits = 0
-        timeFormater.roundingMode = .down
-        
-        guard let minsString = timeFormater.string(from: NSNumber(value: mins)) , let secStr = timeFormater.string(from: NSNumber(value: secs)) else {
-            return "00:00"
-        }
-        return "\(minsString):\(secStr)"
-    }
 }
 
 extension MediaPlayer: AVAudioPlayerDelegate {
