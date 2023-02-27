@@ -55,7 +55,7 @@ final class PlayerVC: UIViewController {
     //MARK: - Private functions
     private func setupViews() {
         
-        backgroundImage.image = Resouces.Backgrounds.firstBack
+        backgroundImage.image = UIImage.Backgrounds.firstBack
         
         view.addSubview(backgroundImage)
         backgroundImage.snp.makeConstraints {

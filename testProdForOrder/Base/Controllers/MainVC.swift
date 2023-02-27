@@ -8,7 +8,15 @@
 import UIKit
 
 class MainVC: UIViewController {
-    
+    //MARK: - Constants
+    private enum Constants {
+        static let firstLabelText = "Try Investee Premium for Free"
+        static let userNameDefaultsKey = "userName"
+        static let disriptionLabelText = "Take a deep breath"
+        static let identifier = "cell"
+        static var cellsTitle = ["Meditate", "Sleep scape", "Feel calm"]
+        static var cellsImage = ["mind", "sleep", "leaf"]
+    }
     var cellsTitle = ["Meditate", "Sleep scape", "Feel calm"]
     var cellsImage = ["mind", "sleep", "leaf"]
     
@@ -16,7 +24,6 @@ class MainVC: UIViewController {
     
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.firstBack
     private let hiLabel = UILabel()
     private let usernameLabel = UILabel()
     private let defaults = UserDefaults.standard
@@ -43,7 +50,7 @@ class MainVC: UIViewController {
     
     //MARK: - Private functions
     private func setupViews() {
-        view.addView(backgroundImage)
+        view.addSubview(backgroundImage)
         backgroundImage.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.left.right.equalToSuperview()
@@ -73,22 +80,22 @@ class MainVC: UIViewController {
     private func configureAppearance() {
         navigationController?.navigationBar.isHidden = true
         
-        backgroundImage.image = image
+        backgroundImage.image = UIImage.Backgrounds.firstBack
         
-        usernameLabel.text = defaults.string(forKey: "userName")
+        usernameLabel.text = defaults.string(forKey: Constants.userNameDefaultsKey)
         
         hiLabel.text = "Hi, \(usernameLabel.text ?? "")!"
         hiLabel.textColor = .white
         hiLabel.font = .systemFont(ofSize: 40, weight: .bold)
         
-        discriptLabel.text = "Take a deep breath"
+        discriptLabel.text = Constants.disriptionLabelText
         discriptLabel.textColor = .white
         discriptLabel.font = .systemFont(ofSize: 20, weight: .light)
     }
     
     private func createTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: Constants.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 132
@@ -115,10 +122,9 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AlbumTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.identifier, for: indexPath) as! AlbumTableViewCell
         
-        cell.setImage(cellsImage[indexPath.section])
-        cell.setTitle(cellsTitle[indexPath.section])
+        cell.setCells(cellsImage[indexPath.section], cellsTitle[indexPath.section])
         return cell
     }
     

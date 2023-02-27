@@ -8,13 +8,16 @@
 import UIKit
 
 class ProductsVC: UIViewController {
-    
-    let identifier = "MyCell"
+    //MARK: - Constants
+    private enum Constants {
+        static let identifier = "MyCell"
+        static let nextScreenButton = "Continue"
+        static let discriprionText = "How do you want to improve your life?"
+    }
     var arrayCells = ["🙏 Learn self-care", "🧘 Start meditation", "😴 Sleep better and faster", "😶 Control emotions", "📝 Track your mood", "🎞 Watch self-care videos"]
     
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.secondBack
     private let screenDescrip = UILabel()
     private let productTableView = UITableView(frame: .zero, style: .grouped)
     private let nextScreenButton = NextScreenButton()
@@ -64,20 +67,20 @@ class ProductsVC: UIViewController {
     
     private func configureAppearance() {
         
-        backgroundImage.image = image
+        backgroundImage.image = UIImage.Backgrounds.secondBack
         
-        screenDescrip.text = "How do you want to improve your life?"
+        screenDescrip.text = Constants.discriprionText
         screenDescrip.textColor = .white
         screenDescrip.font = .systemFont(ofSize: 44, weight: .bold)
         screenDescrip.numberOfLines = 0
         screenDescrip.textAlignment = .center
         
-        nextScreenButton.setTitle(Resouces.ButtonLabel.next)
+        nextScreenButton.setTitle(Constants.nextScreenButton)
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
     }
     
     private func createTableView() {
-        productTableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        productTableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.identifier)
         productTableView.delegate = self
         productTableView.dataSource = self
         productTableView.sectionHeaderHeight = 0
@@ -108,7 +111,7 @@ extension ProductsVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.identifier, for: indexPath)
         cell.textLabel?.text = arrayCells[indexPath.section]
         
         cell.textLabel?.textColor = .white

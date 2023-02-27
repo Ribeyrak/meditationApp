@@ -26,10 +26,10 @@ final class CustomCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        layoutSubviews()
         configure()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -38,22 +38,9 @@ final class CustomCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                typeLabel.textColor = .black
-                priceLable.textColor = .black
-                perMonthLabel.textColor = .black
-                specLabel.textColor = .black
-                contentView.backgroundColor = .white
-                
-                checkLabel.image = .checkmark
-                checkLabel.isHidden = false
+                selected()
             } else {
-                typeLabel.textColor = .white
-                priceLable.textColor = .white
-                perMonthLabel.textColor = .white
-                specLabel.textColor = .white
-                contentView.backgroundColor = .clear
-                
-                checkLabel.isHidden = true
+                notSelected()
             }
         }
     }
@@ -94,7 +81,7 @@ final class CustomCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure() {
+    private func configure() {
         typeLabel.textAlignment = .center
         typeLabel.font = .systemFont(ofSize: 20, weight: .light)
         typeLabel.textColor = .white
@@ -114,12 +101,6 @@ final class CustomCollectionViewCell: UICollectionViewCell {
         specLabel.layer.masksToBounds = true
         specLabel.layer.cornerRadius = 6
         specLabel.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        
-//        checkLabel.layer.masksToBounds = true
-//        checkLabel.layer.cornerRadius = 10
-//        checkLabel.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
-//        checkLabel.layer.borderWidth = 1
-        //checkLabel.image = .checkmark
     }
     
     func setup(with subs: Subscriptions) {
@@ -133,7 +114,25 @@ final class CustomCollectionViewCell: UICollectionViewCell {
         layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         layer.borderWidth = 1
     }
-
+    
+    private func selected() {
+        typeLabel.textColor = .black
+        priceLable.textColor = .black
+        perMonthLabel.textColor = .black
+        specLabel.textColor = .black
+        contentView.backgroundColor = .white
+        checkLabel.image = .checkmark
+        checkLabel.isHidden = false
+    }
+    
+    private func notSelected() {
+        typeLabel.textColor = .white
+        priceLable.textColor = .white
+        perMonthLabel.textColor = .white
+        specLabel.textColor = .white
+        contentView.backgroundColor = .clear
+        checkLabel.isHidden = true
+    }
 }
 
 //MARK: - extensions

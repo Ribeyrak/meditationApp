@@ -8,11 +8,6 @@
 import UIKit
 
 extension UIView {
-    //addView
-    func addView(_ view: UIView) {
-        addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-    }
     // button change color when tapped
     func makeSystem(_ botton: UIButton) {
         

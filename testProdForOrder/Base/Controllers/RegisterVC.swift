@@ -8,10 +8,30 @@
 import UIKit
 
 class RegisterVC: UIViewController {
-
+    //MARK: - Constants
+    private enum Constants {
+        static let firstLabelText = "Register"
+        static let discriptionLabel = "Start improving your life today"
+        static let nextScreenButton = "Continue"
+        static let nameFieldPlaceholder = "Name"
+        static let emailFieldPlaceholder = "example@mail.com"
+        static let phoneFieldPlaceholder = "+1(123)000 0000"
+        static let nameAlertTitle = "Warning"
+        static let nameAlertMessage = "All fields must be filled"
+        static let emailAlertTitle = "Incorrect email"
+        static let emailAlertMessage = "Enter valid email"
+        static let phoneAlertTitle = "Incorrect phone"
+        static let phoneAlertMessage = "Must contain 6-12 numbers"
+        
+        enum DefaultsKeysText {
+            static let nameField = "userName"
+            static let emailField = "userEmail"
+            static let phoneField = "userPhone"
+        }
+    }
+    
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.firstBack
     private let firstLabel = UILabel()
     private let screenDescrip = UILabel()
     private let nameFiled = RegisterField()
@@ -90,27 +110,27 @@ class RegisterVC: UIViewController {
     
     private func configureAppearance() {
         
-        backgroundImage.image = image
+        backgroundImage.image = UIImage.Backgrounds.firstBack
         
-        firstLabel.text = "Register"
+        firstLabel.text = Constants.firstLabelText
         firstLabel.textColor = .white
         firstLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        screenDescrip.text = "Start improving your life today"
+        screenDescrip.text = Constants.discriptionLabel
         screenDescrip.textColor = .white
         screenDescrip.font = .systemFont(ofSize: 19, weight: .light)
         
-        nextScreenButton.setTitle(Resouces.ButtonLabel.next)
+        nextScreenButton.setTitle(Constants.nextScreenButton)
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
         
-        nameFiled.setPlaceholder("Name")
-        nameFiled.text = defaults.string(forKey: "userName")
+        nameFiled.setPlaceholder(Constants.nameFieldPlaceholder)
+        nameFiled.text = defaults.string(forKey: Constants.DefaultsKeysText.nameField)
         
-        emailField.setPlaceholder("example@mail.com")
-        emailField.text = defaults.string(forKey: "userEmail")
+        emailField.setPlaceholder(Constants.emailFieldPlaceholder)
+        emailField.text = defaults.string(forKey: Constants.DefaultsKeysText.emailField)
         
-        phoneField.setPlaceholder("+1(123)000 0000")
-        phoneField.text = defaults.string(forKey: "userPhone")
+        phoneField.setPlaceholder(Constants.phoneFieldPlaceholder)
+        phoneField.text = defaults.string(forKey: Constants.DefaultsKeysText.phoneField)
     }
     
     //MARK: - TextFields Validation
@@ -119,19 +139,19 @@ class RegisterVC: UIViewController {
         
         if let name = nameFiled.text, let email = emailField.text, let phone = phoneField.text {
             if name.isEmpty || email.isEmpty || phone.isEmpty {
-                Validator().simpleAlert(vc: self, title: "Warning", message: "All fields must be filled")
+                Validator().simpleAlert(vc: self, title: Constants.nameAlertTitle, message: Constants.nameAlertMessage)
             } else {
                 if !email.isValidEmail(email: email) {
-                    Validator().simpleAlert(vc: self, title: "Incorrect email", message: "Enter valid email")
+                    Validator().simpleAlert(vc: self, title: Constants.emailAlertTitle, message: Constants.emailAlertMessage)
                 } else if !phone.isValidPhone(phone: phone) {
-                    Validator().simpleAlert(vc: self, title: "Incorrect phone", message: "Must contain 6-12 numbers")
+                    Validator().simpleAlert(vc: self, title: Constants.phoneAlertTitle, message: Constants.phoneAlertMessage)
                 } else {
                     navigationController?.pushViewController(nextVC, animated: true)
                 }
             }
-            defaults.set(name, forKey: "userName")
-            defaults.set(email, forKey: "userEmail")
-            defaults.set(phone, forKey: "userPhone")
+            defaults.set(name, forKey: Constants.DefaultsKeysText.nameField)
+            defaults.set(email, forKey: Constants.DefaultsKeysText.emailField)
+            defaults.set(phone, forKey: Constants.DefaultsKeysText.phoneField)
         }
     }
 }

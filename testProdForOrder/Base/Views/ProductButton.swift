@@ -11,7 +11,7 @@ final class ProductButton: UIButton {
     
     private let label = UILabel()
     private let iconView = UIImageView()
-    private let ima = UIImage()
+    //private let ima = UIImage()
     private let devider = UIView()
     
     override init(frame: CGRect) {
@@ -21,6 +21,7 @@ final class ProductButton: UIButton {
         configure()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -58,7 +59,8 @@ private extension ProductButton {
     }
 
     func configure() {
-        label.font = Resouces.Fonts.helvelticaRegular(with: 20)
+        //label.font = Resouces.Fonts.helvelticaRegular(with: 20)
+        label.font = UIFont.Fonts.helvelticaRegular(with: 20)
         label.textColor = .white
         titleLabel?.font = .systemFont(ofSize: 36)
         layer.cornerRadius = 16

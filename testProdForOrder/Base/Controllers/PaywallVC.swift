@@ -8,7 +8,23 @@
 import UIKit
 
 class PaywallVC: UIViewController {
-    
+    //MARK: - Constants
+    private enum Constants {
+        static let firstLabelText = "Try Investee Premium for Free"
+        static let oneDiscipLabel = "✓ Feel x3.4 times less stressed"
+        static let twoDiscipLabel = "✓ Fall asleep in minutes"
+        static let threeDiscipLabel = "✓ Unlimited access to AI-assistant"
+        static let fourDiscipLabel = "✓ Get access to over 20 meditations and soundscapes"
+        static let trialLabel = "After 7 days trial:"
+        static let nextScreenButton = "Continue"
+        static let yearSubs = "Annual"
+        static let monthSubs = "Monthly"
+        static let pricePerYear = "$39.99"
+        static let pricePerMonth = "$4.99"
+        static let pricePerYearText = "$3.33 per month"
+        static let pricePerMonthText = "per month"
+        static let specialLabel = "Best Value"
+    }
     var subscriptions: [Subscriptions] = []
     
     //MARK: - UI
@@ -40,8 +56,6 @@ class PaywallVC: UIViewController {
         configureAppearance()
         availableSubscriptions()
         collectionView.reloadData()
-        
-        
     }
     
     //MARK: - Private functions
@@ -95,44 +109,43 @@ class PaywallVC: UIViewController {
         firstLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.left.right.equalToSuperview().inset(23)
-            //$0.top.equalToSuperview().offset(240)
             $0.bottom.equalTo(oneDiscipLabel.snp.top).inset(-25)
         }
     }
     
     private func configureAppearance() {
         
-        backgroundImage.image = Resouces.Backgrounds.secondBack
+        backgroundImage.image = UIImage.Backgrounds.secondBack
         
-        firstLabel.text = "Try Investee Premium for Free"
+        firstLabel.text = Constants.firstLabelText
         firstLabel.textColor = .white
         firstLabel.numberOfLines = 0
         firstLabel.textAlignment = .center
         firstLabel.font = .systemFont(ofSize: 44, weight: .bold)
         
-        oneDiscipLabel.text = "✓ Feel x3.4 times less stressed"
+        oneDiscipLabel.text = Constants.oneDiscipLabel
         oneDiscipLabel.textColor = .white
         oneDiscipLabel.font = .systemFont(ofSize: 18, weight: .light)
         
-        twoDiscipLabel.text = "✓ Fall asleep in minutes"
+        twoDiscipLabel.text = Constants.twoDiscipLabel
         twoDiscipLabel.textColor = .white
         twoDiscipLabel.font = .systemFont(ofSize: 18, weight: .light)
         
-        threeDiscipLabel.text = "✓ Unlimited access to AI-assistant"
+        threeDiscipLabel.text = Constants.threeDiscipLabel
         threeDiscipLabel.textColor = .white
         threeDiscipLabel.font = .systemFont(ofSize: 18, weight: .light)
         
-        fourDiscipLabel.text = "✓ Get access to over 20 meditations and soundscapes"
+        fourDiscipLabel.text = Constants.fourDiscipLabel
         fourDiscipLabel.textColor = .white
         fourDiscipLabel.font = .systemFont(ofSize: 18, weight: .light)
         fourDiscipLabel.numberOfLines = 0
         
-        trialLabel.text = "After 7 days trial:"
+        trialLabel.text = Constants.trialLabel
         trialLabel.textColor = .white
         trialLabel.textAlignment = .center
         trialLabel.font = .systemFont(ofSize: 20, weight: .bold)
         
-        nextScreenButton.setTitle("Try for free and subscribe")
+        nextScreenButton.setTitle(Constants.nextScreenButton)
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
         
         collectionView.dataSource = self
@@ -144,8 +157,8 @@ class PaywallVC: UIViewController {
     
     private func availableSubscriptions() {
         subscriptions = [
-            Subscriptions(typeLabel: "Annual", priceLable: "$39.99", perMonthLabel: "$3.33 per month", specLabel: "Best Value"),
-            Subscriptions(typeLabel: "Monthly", priceLable: "$4.99", perMonthLabel: "per month", specLabel: nil)
+            Subscriptions(typeLabel: Constants.yearSubs, priceLable: Constants.pricePerYear, perMonthLabel: Constants.pricePerYearText, specLabel: Constants.specialLabel),
+            Subscriptions(typeLabel: Constants.monthSubs, priceLable: Constants.pricePerMonth, perMonthLabel: Constants.pricePerMonthText, specLabel: nil)
         ]
     }
     

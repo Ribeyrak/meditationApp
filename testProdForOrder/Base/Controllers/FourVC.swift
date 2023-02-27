@@ -8,10 +8,16 @@
 import UIKit
 
 class FourVC: UIViewController {
+    //MARK: - Constants
+    private enum Constants {
+        static let topLabel = "In Love"
+        static let bottomLabel = "with Sleep."
+        static let discriptionLabel = "Name the kind of tree you can hold in your hand? A palm tree!"
+        static let nextScreenButton = "Continue"
+    }
     
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.fourBack
     private let firstLabel = UILabel()
     private let secondLabel = UILabel()
     private let screenDescrip = UILabel()
@@ -65,22 +71,22 @@ class FourVC: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.image = image
+        backgroundImage.image = UIImage.Backgrounds.fourBack
         
-        firstLabel.text = Resouces.TopLabel.fourScreen
+        firstLabel.text = Constants.topLabel
         firstLabel.textColor = .systemBlue
-        firstLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        firstLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        secondLabel.text = Resouces.BottomLabel.fourScreen
+        secondLabel.text = Constants.bottomLabel
         secondLabel.textColor = .white
-        secondLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        secondLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        screenDescrip.text = Resouces.DisciptLabel.fourScreen
-        screenDescrip.font = .systemFont(ofSize: 19, weight: UIFont.Weight.light)
+        screenDescrip.text = Constants.discriptionLabel
+        screenDescrip.font = .systemFont(ofSize: 19, weight: .light)
         screenDescrip.textColor = .white
         screenDescrip.numberOfLines = 0
         
-        nextScreenButton.setTitle(Resouces.ButtonLabel.next)
+        nextScreenButton.setTitle(Constants.nextScreenButton)
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
     }
     

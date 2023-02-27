@@ -8,10 +8,16 @@
 import UIKit
 
 class ThirdVC: UIViewController {
-
+    //MARK: - Constants
+    private enum Constants {
+        static let topLabel = "Meditate"
+        static let bottomLabel = "Stress less."
+        static let discriptionLabel = "Why did the teddy bear say no to dessert? Because she was stuffed"
+        static let nextScreenButton = "Continue"
+    }
+    
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.thirdBack
     private let firstLabel = UILabel()
     private let secondLabel = UILabel()
     private let screenDescrip = UILabel()
@@ -65,22 +71,22 @@ class ThirdVC: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.image = image
+        backgroundImage.image = UIImage.Backgrounds.thirdBack
         
-        firstLabel.text = Resouces.TopLabel.thirdScreen
+        firstLabel.text = Constants.topLabel
         firstLabel.textColor = .systemBlue
-        firstLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        firstLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        secondLabel.text = Resouces.BottomLabel.thirdScreen
+        secondLabel.text = Constants.bottomLabel
         secondLabel.textColor = .white
-        secondLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        secondLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        screenDescrip.text = Resouces.DisciptLabel.thirdScreen
-        screenDescrip.font = .systemFont(ofSize: 19, weight: UIFont.Weight.light)
+        screenDescrip.text = Constants.discriptionLabel
+        screenDescrip.font = .systemFont(ofSize: 19, weight: .light)
         screenDescrip.textColor = .white
         screenDescrip.numberOfLines = 0
         
-        nextScreenButton.setTitle(Resouces.ButtonLabel.next)
+        nextScreenButton.setTitle(Constants.nextScreenButton)
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
     }
     

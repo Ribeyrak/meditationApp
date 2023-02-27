@@ -8,10 +8,13 @@
 import UIKit
 
 class PersonalizingVC: UIViewController {
-
+    //MARK: - Constants
+    private enum Constants {
+        static let firstLabelText = "Personalizing content"
+        static let discriptionLabel = "Please wait little bit..."
+    }
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.thirdBack
     private let firstLabel = UILabel()
     private let progressView = UIProgressView()
     private var timer = Timer()
@@ -58,9 +61,9 @@ class PersonalizingVC: UIViewController {
     }
     
     private func configureAppearance() {
-        backgroundImage.image = image
+        backgroundImage.image = UIImage.Backgrounds.thirdBack
         
-        firstLabel.text = "Personalizing content"
+        firstLabel.text = Constants.firstLabelText
         firstLabel.textColor = .white
         firstLabel.font = .systemFont(ofSize: 52, weight: .bold)
         firstLabel.numberOfLines = 0
@@ -71,7 +74,7 @@ class PersonalizingVC: UIViewController {
         progressView.trackTintColor = .gray
         progressView.progressTintColor = UIColor(hexString: "#63B2FB")
         
-        screenDescrip.text = "Please wait little bit..."
+        screenDescrip.text = Constants.discriptionLabel
         screenDescrip.textColor = .white
         screenDescrip.font = .systemFont(ofSize: 19, weight: .light)
         screenDescrip.textAlignment = .center

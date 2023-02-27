@@ -15,7 +15,7 @@ class AlbumTableViewCell: UITableViewCell {
     
     private let label: UILabel = {
         let v = UILabel()
-        v.font = Resouces.Fonts.helvelticaRegular(with: 20)
+        v.font = UIFont.Fonts.helvelticaRegular(with: 20)
         v.textColor = .white
         return v
     }()
@@ -36,6 +36,7 @@ class AlbumTableViewCell: UITableViewCell {
         setupConstraints()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -79,11 +80,8 @@ class AlbumTableViewCell: UITableViewCell {
         selectedBackgroundView = selected
     }
     
-    func setImage(_ image: String) {
+    func setCells(_ image: String, _ title: String) {
         iconView.image = UIImage(named: image)
-    }
-    
-    func setTitle(_ title: String) {
         label.text = title
     }
 }

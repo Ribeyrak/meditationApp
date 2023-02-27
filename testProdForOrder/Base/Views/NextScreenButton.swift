@@ -18,6 +18,7 @@ final class NextScreenButton: UIButton {
         configure()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -37,7 +38,8 @@ private extension NextScreenButton {
     }
 
     func configure() {
-        label.font = Resouces.Fonts.helvelticaRegular(with: 20)
+        //label.font = Resouces.Fonts.helvelticaRegular(with: 20)
+        label.font = UIFont.Fonts.helvelticaRegular(with: 20)
         label.textColor = .white
         titleLabel?.font = .systemFont(ofSize: 36)
         layer.cornerRadius = 16

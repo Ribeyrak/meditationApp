@@ -9,10 +9,16 @@ import UIKit
 import SnapKit
 
 class SecondVC: UIViewController {
+    //MARK: - Constants
+    private enum Constants {
+        static let topLabel = "Al Selfcare"
+        static let bottomLabel = "Expert."
+        static let discriptionLabel = "Why did the soccer player take so long to eat dinner? Because he thought he couldn’t use his hands."
+        static let nextScreenButton = "Continue"
+    }
     
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.secondBack
     private let firstLabel = UILabel()
     private let secondLabel = UILabel()
     private let screenDescrip = UILabel()
@@ -66,22 +72,22 @@ class SecondVC: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.image = image
+        backgroundImage.image = UIImage.Backgrounds.secondBack
         
-        firstLabel.text = Resouces.TopLabel.secondScreen
+        firstLabel.text = Constants.topLabel
         firstLabel.textColor = .systemBlue
-        firstLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        firstLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        secondLabel.text = Resouces.BottomLabel.secondScreen
+        secondLabel.text = Constants.bottomLabel
         secondLabel.textColor = .white
-        secondLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        secondLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        screenDescrip.text = Resouces.DisciptLabel.secondScreen
-        screenDescrip.font = .systemFont(ofSize: 19, weight: UIFont.Weight.light)
+        screenDescrip.text = Constants.discriptionLabel
+        screenDescrip.font = .systemFont(ofSize: 19, weight: .light)
         screenDescrip.textColor = .white
         screenDescrip.numberOfLines = 0
         
-        nextScreenButton.setTitle(Resouces.ButtonLabel.next)
+        nextScreenButton.setTitle(Constants.nextScreenButton)
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
     }
     

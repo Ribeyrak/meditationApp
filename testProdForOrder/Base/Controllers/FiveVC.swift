@@ -8,10 +8,16 @@
 import UIKit
 
 class FiveVC: UIViewController {
+    //MARK: - Constants
+    private enum Constants {
+        static let topLabel = "Mood"
+        static let bottomLabel = "Journal."
+        static let discriptionLabel = "Well, buddy, you got to this screen, and now what?"
+        static let nextScreenButton = "Continue"
+    }
     
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.fiveBack
     private let firstLabel = UILabel()
     private let secondLabel = UILabel()
     private let screenDescrip = UILabel()
@@ -65,22 +71,22 @@ class FiveVC: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.image = image
+        backgroundImage.image = UIImage.Backgrounds.fiveBack
         
-        firstLabel.text = Resouces.TopLabel.fiveScreen
+        firstLabel.text = Constants.topLabel
         firstLabel.textColor = .systemBlue
-        firstLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        firstLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        secondLabel.text = Resouces.BottomLabel.fiveScreen
+        secondLabel.text = Constants.bottomLabel
         secondLabel.textColor = .white
-        secondLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        secondLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        screenDescrip.text = Resouces.DisciptLabel.fiveScreen
-        screenDescrip.font = .systemFont(ofSize: 19, weight: UIFont.Weight.light)
+        screenDescrip.text = Constants.discriptionLabel
+        screenDescrip.font = .systemFont(ofSize: 19, weight: .light)
         screenDescrip.textColor = .white
         screenDescrip.numberOfLines = 0
         
-        nextScreenButton.setTitle(Resouces.ButtonLabel.next)
+        nextScreenButton.setTitle(Constants.nextScreenButton)
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
     }
     

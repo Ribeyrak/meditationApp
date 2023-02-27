@@ -9,10 +9,16 @@ import UIKit
 import SnapKit
 
 class FirstVC: UIViewController {
-    
+    //MARK: - Constants
+    private enum Constants {
+        static let topLabel = "One & Only"
+        static let bottomLabel = "Self Care App."
+        static let discriptionLabel = "Relieve stress, drink coffee and chill the fuck with us, buddy"
+        static let nextScreenButton = "Continue"
+    }
+
     //MARK: - UI
     private let backgroundImage = UIImageView()
-    private let image = Resouces.Backgrounds.firstBack
     private let firstLabel = UILabel()
     private let secondLabel = UILabel()
     private let screenDescrip = UILabel()
@@ -27,7 +33,7 @@ class FirstVC: UIViewController {
     //MARK: - Private functions
     private func setupViews() {
         
-        view.addView(backgroundImage)
+        view.addSubview(backgroundImage)
         backgroundImage.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.left.right.equalToSuperview()
@@ -54,7 +60,6 @@ class FirstVC: UIViewController {
         view.addSubview(nextScreenButton)
         nextScreenButton.snp.makeConstraints {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(15)
-            //$0.bottom.equalToSuperview().inset(32)
             $0.centerX.equalToSuperview()
             $0.left.right.equalToSuperview().inset(34)
             $0.height.equalTo(75)
@@ -66,22 +71,22 @@ class FirstVC: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.image = image
+        backgroundImage.image = UIImage.Backgrounds.firstBack
         
-        firstLabel.text = Resouces.TopLabel.firstScreen
+        firstLabel.text = Constants.topLabel
         firstLabel.textColor = UIColor(hexString: "#63B2FB")
-        firstLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        firstLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        secondLabel.text = Resouces.BottomLabel.firstScreen
+        secondLabel.text = Constants.bottomLabel
         secondLabel.textColor = .white
-        secondLabel.font = .systemFont(ofSize: 52, weight: UIFont.Weight.bold)
+        secondLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        screenDescrip.text = Resouces.DisciptLabel.firstScreen
-        screenDescrip.font = .systemFont(ofSize: 19, weight: UIFont.Weight.light)
+        screenDescrip.text = Constants.discriptionLabel
+        screenDescrip.font = .systemFont(ofSize: 19, weight: .light)
         screenDescrip.textColor = .white
         screenDescrip.numberOfLines = 0
         
-        nextScreenButton.setTitle(Resouces.ButtonLabel.next)
+        nextScreenButton.setTitle(Constants.nextScreenButton)
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
     }
     
