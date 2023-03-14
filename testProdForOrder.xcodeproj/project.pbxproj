@@ -143,11 +143,7 @@
 				C82647512983EA7800CD2F19 /* Application */,
 				C82647522983EB8600CD2F19 /* Base */,
 				C826476429841E5C00CD2F19 /* Helpers */,
-				C82647462983EA0000CD2F19 /* Assets.xcassets */,
-				C88E9E1C2996A61A008428A6 /* meditation */,
-				C88E9E192996A5DC008428A6 /* sleep */,
-				C88E9E1A2996A5F9008428A6 /* calm */,
-				C82647482983EA0000CD2F19 /* LaunchScreen.storyboard */,
+				C878D7FD29C11EB400B61149 /* SupprotingFiles */,
 				C826474B2983EA0000CD2F19 /* Info.plist */,
 			);
 			path = testProdForOrder;
@@ -209,6 +205,7 @@
 				C826475A298400F600CD2F19 /* Extensions */,
 				C898558F29896C92004A7B35 /* Validator.swift */,
 				C898559B298AA95D004A7B35 /* Coordinator */,
+				C878D7FC29C11E2500B61149 /* Songs */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -265,6 +262,25 @@
 				C88E9E172996A5A4008428A6 /* Album.swift */,
 			);
 			path = PlayerModel;
+			sourceTree = "<group>";
+		};
+		C878D7FC29C11E2500B61149 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				C88E9E1A2996A5F9008428A6 /* calm */,
+				C88E9E192996A5DC008428A6 /* sleep */,
+				C88E9E1C2996A61A008428A6 /* meditation */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
+		C878D7FD29C11EB400B61149 /* SupprotingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C82647462983EA0000CD2F19 /* Assets.xcassets */,
+				C82647482983EA0000CD2F19 /* LaunchScreen.storyboard */,
+			);
+			path = SupprotingFiles;
 			sourceTree = "<group>";
 		};
 		C88E9E192996A5DC008428A6 /* sleep */ = {
