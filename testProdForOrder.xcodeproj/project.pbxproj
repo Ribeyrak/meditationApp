@@ -174,9 +174,9 @@
 		C82647532983EBAF00CD2F19 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C82647592983F5D000CD2F19 /* Benefits */,
-				C898558829882769004A7B35 /* Register */,
-				C8985596298AA773004A7B35 /* Main */,
+				C878D7F529C11BEB00B61149 /* Benefits */,
+				C878D7F729C11C1800B61149 /* Register */,
+				C878D7F929C11C6200B61149 /* Main */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -189,18 +189,6 @@
 				C88E9E0C29953961008428A6 /* ProductButton.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		C82647592983F5D000CD2F19 /* Benefits */ = {
-			isa = PBXGroup;
-			children = (
-				C82647572983F5B900CD2F19 /* FirstVC.swift */,
-				C826475D2984023900CD2F19 /* SecondVC.swift */,
-				C826475F2984026F00CD2F19 /* ThirdVC.swift */,
-				C8C8C2D2298472D200A83661 /* FourVC.swift */,
-				C8C8C2D4298472E000A83661 /* FiveVC.swift */,
-			);
-			name = Benefits;
 			sourceTree = "<group>";
 		};
 		C826475A298400F600CD2F19 /* Extensions */ = {
@@ -225,14 +213,58 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C88E9E162996A580008428A6 /* Model */ = {
+		C878D7F529C11BEB00B61149 /* Benefits */ = {
+			isa = PBXGroup;
+			children = (
+				C82647572983F5B900CD2F19 /* FirstVC.swift */,
+				C826475D2984023900CD2F19 /* SecondVC.swift */,
+				C826475F2984026F00CD2F19 /* ThirdVC.swift */,
+				C8C8C2D2298472D200A83661 /* FourVC.swift */,
+				C8C8C2D4298472E000A83661 /* FiveVC.swift */,
+			);
+			path = Benefits;
+			sourceTree = "<group>";
+		};
+		C878D7F729C11C1800B61149 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				C898558629882654004A7B35 /* RegisterVC.swift */,
+				C8985589298827A1004A7B35 /* ProductsVC.swift */,
+				C898558B298827E3004A7B35 /* PersonalizingVC.swift */,
+				C878D7F829C11C3600B61149 /* PaywallVC */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		C878D7F829C11C3600B61149 /* PaywallVC */ = {
+			isa = PBXGroup;
+			children = (
+				C8985594298AA752004A7B35 /* PaywallVC.swift */,
+				C88E9E04299291D9008428A6 /* CustomCollectionViewCell.swift */,
+				C88E9E0229926771008428A6 /* Subscriptions.swift */,
+			);
+			path = PaywallVC;
+			sourceTree = "<group>";
+		};
+		C878D7F929C11C6200B61149 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C8985597298AA792004A7B35 /* MainVC.swift */,
+				C8AAD486299AB5ED0085F02A /* AlbumTableViewCell.swift */,
+				C8985599298AA7AE004A7B35 /* PlayerVC.swift */,
+				C878D7FA29C11C7200B61149 /* PlayerModel */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C878D7FA29C11C7200B61149 /* PlayerModel */ = {
 			isa = PBXGroup;
 			children = (
 				C88E9E1D2996B2FE008428A6 /* MediaPlayer.swift */,
 				C88E9E142996A4D4008428A6 /* Song.swift */,
 				C88E9E172996A5A4008428A6 /* Album.swift */,
 			);
-			name = Model;
+			path = PlayerModel;
 			sourceTree = "<group>";
 		};
 		C88E9E192996A5DC008428A6 /* sleep */ = {
@@ -257,38 +289,6 @@
 				C88E9E102996A2CD008428A6 /* meedMus.mp3 */,
 			);
 			path = meditation;
-			sourceTree = "<group>";
-		};
-		C898558829882769004A7B35 /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				C898558629882654004A7B35 /* RegisterVC.swift */,
-				C8985589298827A1004A7B35 /* ProductsVC.swift */,
-				C898558B298827E3004A7B35 /* PersonalizingVC.swift */,
-				C8985593298AA731004A7B35 /* Paywall */,
-			);
-			name = Register;
-			sourceTree = "<group>";
-		};
-		C8985593298AA731004A7B35 /* Paywall */ = {
-			isa = PBXGroup;
-			children = (
-				C8985594298AA752004A7B35 /* PaywallVC.swift */,
-				C88E9E04299291D9008428A6 /* CustomCollectionViewCell.swift */,
-				C88E9E0229926771008428A6 /* Subscriptions.swift */,
-			);
-			name = Paywall;
-			sourceTree = "<group>";
-		};
-		C8985596298AA773004A7B35 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				C8985597298AA792004A7B35 /* MainVC.swift */,
-				C8AAD486299AB5ED0085F02A /* AlbumTableViewCell.swift */,
-				C8985599298AA7AE004A7B35 /* PlayerVC.swift */,
-				C88E9E162996A580008428A6 /* Model */,
-			);
-			name = Main;
 			sourceTree = "<group>";
 		};
 		C898559B298AA95D004A7B35 /* Coordinator */ = {
