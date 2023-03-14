@@ -1,31 +1,29 @@
 //
-//  FourVC.swift
+//  BaseController.swift
 //  testProdForOrder
 //
-//  Created by Evhen Lukhtan on 27.01.2023.
+//  Created by Evhen Lukhtan on 14.03.2023.
 //
 
 import UIKit
 
-class FourVC: UIViewController {
+class BaseViewController: UIViewController {
+    
     //MARK: - Constants
     private enum Constants {
-        static let topLabel = "In Love"
-        static let bottomLabel = "with Sleep."
-        static let discriptionLabel = "Name the kind of tree you can hold in your hand? A palm tree!"
         static let nextScreenButton = "Continue"
     }
-    
+
     //MARK: - UI
-    private let backgroundImage = UIImageView()
-    private let firstLabel = UILabel()
-    private let secondLabel = UILabel()
-    private let screenDescrip = UILabel()
-    private let nextScreenButton = NextScreenButton()
+    let backgroundImage = UIImageView()
+    let firstLabel = UILabel()
+    let secondLabel = UILabel()
+    let screenDescrip = UILabel()
+    let nextScreenButton = NextScreenButton()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
         setupViews()
         configureAppearance()
     }
@@ -66,22 +64,18 @@ class FourVC: UIViewController {
         }
     }
     
-    private func configureAppearance() {
+    func configureAppearance() {
 
         navigationController?.navigationBar.isHidden = true
         
         backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.image = UIImage.Backgrounds.fourBack
         
-        firstLabel.text = Constants.topLabel
-        firstLabel.textColor = .systemBlue
+        firstLabel.textColor = UIColor(hexString: "#63B2FB")
         firstLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        secondLabel.text = Constants.bottomLabel
         secondLabel.textColor = .white
         secondLabel.font = .systemFont(ofSize: 52, weight: .bold)
         
-        screenDescrip.text = Constants.discriptionLabel
         screenDescrip.font = .systemFont(ofSize: 19, weight: .light)
         screenDescrip.textColor = .white
         screenDescrip.numberOfLines = 0
@@ -89,10 +83,9 @@ class FourVC: UIViewController {
         nextScreenButton.setTitle(Constants.nextScreenButton)
         nextScreenButton.addTarget(self, action: #selector(nextVC), for: .touchUpInside)
     }
-    
+
     //MARK: - Actions
     @objc func nextVC() {
-        let nextVC = FiveVC()
-        navigationController?.pushViewController(nextVC, animated: true)
+        fatalError("Must be implemented in subclass")
     }
 }
